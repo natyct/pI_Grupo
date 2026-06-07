@@ -24,7 +24,7 @@ const conteudos = {
     coleta: {
         titulo: "Coleta Inteligente",
         descricao: "A transformação sustentável começa com a recuperação eficiente dos resíduos metálicos.",
-        imagem: "natyct.github.io/img/coleta.png",
+        imagem: "img/coleta.png",
         itens: ["Logística Reversa", "Rastreamento de Materiais", "Redução de Descartes", "Aproveitamento Máximo"]
     },
     triagem: {
