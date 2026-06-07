@@ -1,116 +1,145 @@
-const icones = document.querySelectorAll('.icone');
-const modal = document.querySelector('.modal');
-const fechar = document.querySelector('.fechar');
+// ==========================================================================
+// ELEMENTOS DO SISTEMA
+// ==========================================================================
+const icones = document.querySelectorAll(".icone");
+const modal = document.querySelector(".modal");
+const fechar = document.querySelector(".fechar");
 
-const titulo = document.getElementById('titulo-modal');
-const descricao = document.getElementById('descricao-modal');
-const lista = document.getElementById('lista-modal');
-const imagem = document.querySelector('.imagem-modal');
+const tituloModal = document.getElementById("titulo-modal");
+const descricaoModal = document.getElementById("descricao-modal");
+const listaModal = document.getElementById("lista-modal");
+const imagemModal = document.querySelector(".modal-imagem");
 
-const dados = {
+const formulario = document.querySelector(".form-container form");
+const anonimo = document.getElementById("anonimo");
+const campoNome = document.getElementById("campoNome");
+const campoEmail = document.getElementById("campoEmail");
 
-    renovavel: {
-        titulo: 'Geração Renovável',
-        descricao: 'Produção de energia limpa utilizando fontes sustentáveis.',
-        imagem: 'img/renovavel.jpg',
-        itens: [
-            'Energia Solar',
-            'Energia Eólica',
-            'Biomassa',
-            'Redução de emissões'
-        ]
+const btnConhecer = document.querySelector(".btn-conhecer");
+
+// ==========================================================================
+// CONTEÚDOS DINÂMICOS DOS QUADROS (ÍCONES / MENU)
+// ==========================================================================
+const conteudos = {
+    coleta: {
+        titulo: "Coleta Inteligente",
+        descricao: "A transformação sustentável começa com a recuperação eficiente dos resíduos metálicos.",
+        imagem: "/img/coleta.png",
+        itens: ["Logística Reversa", "Rastreamento de Materiais", "Redução de Descartes", "Aproveitamento Máximo"]
     },
-
-    eficiencia: {
-        titulo: 'Eficiência Energética',
-        descricao: 'Redução de desperdícios e otimização do consumo.',
-        imagem: 'img/eficiencia.jpg',
-        itens: [
-            'Diagnóstico energético',
-            'Automação industrial',
-            'Controle de perdas',
-            'Economia de custos'
-        ]
+    triagem: {
+        titulo: "Triagem e Classificação",
+        descricao: "Tecnologias modernas garantem maior qualidade e reaproveitamento dos metais.",
+        imagem: "/img/triagem.jpg",
+        itens: ["Separação Magnética", "Classificação Automatizada", "Maior Pureza", "Menos Resíduos"]
     },
-
-    monitoramento: {
-        titulo: 'Monitoramento Inteligente',
-        descricao: 'Acompanhamento em tempo real dos indicadores.',
-        imagem: 'img/monitoramento.jpg',
-        itens: [
-            'Dashboards',
-            'Sensores IoT',
-            'Alertas automáticos',
-            'Análise de desempenho'
-        ]
+    circular: {
+        titulo: "Economia Circular",
+        descricao: "Os materiais retornam ao ciclo produtivo ao invés de se tornarem resíduos.",
+        imagem: "/img/economia_circular.jpg",
+        itens: ["Reutilização de Sucatas", "Menor Extração Mineral", "Cadeia de Suprimentos Verde", "Produção Responsável"]
     },
-
-    consumo: {
-        titulo: 'Gestão de Consumo',
-        descricao: 'Controle completo do uso de energia da indústria.',
-        imagem: 'img/consumo.jpg',
-        itens: [
-            'Relatórios',
-            'Metas de consumo',
-            'Indicadores',
-            'Economia operacional'
-        ]
+    carbono: {
+        titulo: "Descarbonização",
+        descricao: "A reciclagem de metais reduz significativamente as emissões de gases poluentes.",
+        imagem: "/img/emissao_carbono.jpg",
+        itens: ["Redução de CO₂", "Baixo Carbono Industrial", "Menor Consumo Energético", "Metas ESG"]
     },
-
-    sustentabilidade: {
-        titulo: 'Sustentabilidade e Impacto',
-        descricao: 'Projetos voltados para ESG e redução ambiental.',
-        imagem: 'img/sustentabilidade.jpg',
-        itens: [
-            'Créditos de carbono',
-            'ESG',
-            'Responsabilidade ambiental',
-            'Impacto positivo'
-        ]
+    impacto: {
+        titulo: "Impacto ESG",
+        descricao: "Resultados práticos mensurados através de sólidos indicadores ambientais e sociais.",
+        imagem: "/img/esg.jpg",
+        itens: ["Relatórios de Transparência", "Indicadores Ambientais", "Ações Sociais Integradas", "Governança Corporativa"]
     }
 };
 
-icones.forEach(icone => {
+// ==========================================================================
+// MECANISMO E CONTROLE DOS QUADROS (MODAL)
+// ==========================================================================
+icones.forEach((icone) => {
+    icone.addEventListener("click", (e) => {
+        e.stopPropagation(); 
+        
+        const tema = icone.getAttribute("data-tema");
+        if (!conteudos[tema]) return;
 
-    icone.addEventListener('click', () => {
+        icones.forEach(item => item.classList.remove("ativo"));
+        icone.classList.add("ativo");
 
-        icones.forEach(item => {
-            item.classList.remove('ativo');
-        });
+        tituloModal.textContent = conteudos[tema].titulo;
+        descricaoModal.textContent = conteudos[tema].descricao;
 
-        icone.classList.add('ativo');
-
-        const tema = icone.dataset.tema;
-
-        titulo.textContent = dados[tema].titulo;
-        descricao.textContent = dados[tema].descricao;
-
-        imagem.style.backgroundImage =
-            `url('${dados[tema].imagem}')`;
-
-        lista.innerHTML = '';
-
-        dados[tema].itens.forEach(item => {
-
-            const li = document.createElement('li');
+        listaModal.innerHTML = "";
+        conteudos[tema].itens.forEach(item => {
+            const li = document.createElement("li");
             li.textContent = item;
-
-            lista.appendChild(li);
-
+            listaModal.appendChild(li);
         });
 
-        modal.style.display = 'flex';
-
+        imagemModal.style.backgroundImage = `url('${conteudos[tema].imagem}')`;
+        modal.style.display = "flex";
     });
-
 });
 
-fechar.addEventListener('click', () => {
+function fecharModal() {
+    modal.style.display = "none";
+    icones.forEach(item => item.classList.remove("ativo"));
+}
 
-    modal.style.display = 'none';
+if (fechar) fechar.addEventListener("click", fecharModal);
 
-    icones.forEach(item => {
-        item.classList.remove('ativo');
-    });
-
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") fecharModal();
 });
+
+document.addEventListener("click", (e) => {
+    if (modal.style.display === "flex" && !modal.contains(e.target)) {
+        fecharModal();
+    }
+});
+
+// ==========================================================================
+// CONTROLE DO BOTÃO "QUERO CONTRIBUIR" (ROLA A TELA)
+// ==========================================================================
+if (btnConhecer) {
+    btnConhecer.addEventListener("click", () => {
+        const areaInterativa = document.getElementById("area-interativa");
+        if (areaInterativa) {
+            // Executa a rolagem suave até a segunda parte da tela
+            areaInterativa.scrollIntoView({ behavior: "smooth" });
+            
+            // Foca o cursor no formulário após a rolagem terminar
+            setTimeout(() => {
+                const campoTipo = document.getElementById("tipo");
+                if (campoTipo) campoTipo.focus();
+            }, 800);
+        }
+    });
+}
+
+// ==========================================================================
+// FORMULÁRIO: SUBMIT E ANONIMATO
+// ==========================================================================
+if (formulario) {
+    formulario.addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Obrigado pela sua contribuição! Sua ideia ou relato foi enviado com sucesso para a equipe EcoMetal.");
+        formulario.reset();
+        campoNome.style.display = "flex";
+        campoEmail.style.display = "flex";
+    });
+}
+
+if (anonimo) {
+    anonimo.addEventListener("change", () => {
+        if (anonimo.checked) {
+            campoNome.style.display = "none";
+            campoEmail.style.display = "none";
+            document.getElementById("nome").value = "";
+            document.getElementById("email").value = "";
+        } else {
+            campoNome.style.display = "flex";
+            campoEmail.style.display = "flex";
+        }
+    });
+}

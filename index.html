@@ -3,106 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energia Sustentável</title>
-    <link rel="stylesheet" href="style.css">
+    <title>EcoMetal - Sustentabilidade Inteligente</title>
+    <link rel="stylesheet" href="/style/index.css">
 </head>
 <body>
 
-    <header>
+  <header>
         <div class="logo">
-            <h2>EcoEnergia</h2>
+            <h2>EcoMetal</h2>
         </div>
 
-        <nav>
-            <a href="#">Início</a>
-            <a href="#">Soluções</a>
-            <a href="#">Tecnologias</a>
-            <a href="#">Impacto</a>
-            <a href="#">Contato</a>
-        </nav>
+        <div class="menu-bloco-direito">
+            
+            <div class="quadro-header-projeto">
+                <span class="pisca-alerta">●</span>
+                <div class="texto-projeto">
+                    <h4>Conheça o Projeto</h4>
+                    <p>Liga Steam 2026</p>
+                </div>
+            </div>
+
+            <nav class="icones-container">
+                <div class="icone" data-tema="coleta">
+                    <div class="circulo">♻</div>
+                    <span>Coleta Inteligente</span>
+                </div>
+                <div class="icone" data-tema="triagem">
+                    <div class="circulo">🔍</div>
+                    <span>Triagem</span>
+                </div>
+                <div class="icone" data-tema="circular">
+                    <div class="circulo">🔄</div>
+                    <span>Economia Circular</span>
+                </div>
+                <div class="icone" data-tema="carbono">
+                    <div class="circulo">🌱</div>
+                    <span>Descarbonização</span>
+                </div>
+                <div class="icone" data-tema="impacto">
+                    <div class="circulo">📊</div>
+                    <span>Impacto ESG</span>
+                </div>
+            </nav>
+
+        </div>
     </header>
 
-    <main>
+    <section class="hero-topo">
+        <div class="overlay"></div>
+        <div class="conteudo-apresentacao">
+            <span class="tag">♻ RECICLAGEM DE METAIS E DESCARBONIZAÇÃO</span>
+            <h1>Transformando resíduos metálicos em <span>valor para o futuro</span>.</h1>
+            <p>Reciclagem, economia circular e descarbonização conectadas para construir uma indústria mais limpa, eficiente e sustentável.</p>
+            <div class="botoes">
+                <button class="btn-verde btn-conhecer">Quero Contribuir ↓</button>
+            </div>
+        </div>
+    </section>
 
-        <section class="hero">
+    <section class="secao-inferior" id="area-interativa">
+        <div class="container-duplo">
+            
+            <div class="coluna-contato">
+                <div class="manifesto-mini">
+                    <h3>💡 O que é este canal e por que participar?</h3>
+                    <p>Este é o nosso ecossistema de ouvidoria e inovação aberta. Cada ideia ou relato enviado otimiza a triagem de metais, reduz desperdícios e acelera nossas metas ambientais.</p>
+                </div>
 
-            <div class="overlay"></div>
-
-            <div class="conteudo">
-                <h1>Energia que conecta<br>indústrias a um futuro<br><span>sustentável.</span></h1>
-
-                <p>
-                    Integramos geração, eficiência e gestão inteligente para
-                    reduzir custos, otimizar processos e gerar impacto positivo.
-                </p>
-
-                <button>Conheça nossas soluções</button>
+                <div class="quadro-contato">
+                    <h3>📞 Canais de Contato</h3>
+                    <p>Precisa falar com a EcoMetal para outros assuntos comerciais ou parcerias? Use nossos canais diretos:</p>
+                    <div class="info-contato">
+                        <p><strong>📍 Endereço:</strong> João Monlevade - MG</p>
+                        <p><strong>📧 E-mail:</strong> contatonatyct@gmail.com.br</p>
+                                                <p style="display: flex; align-items: center; gap: 5px;">
+                            <strong>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#7cff73" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 2px;">
+                                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.69-4.936c-.202-.101-1.202-.594-1.387-.662-.185-.069-.32-.103-.454.101-.134.204-.519.662-.636.793-.117.13-.235.146-.438.045-.203-.102-.855-.315-1.628-.992-.6-.535-1.005-1.197-1.123-1.402-.117-.204-.013-.315.088-.415.09-.09.204-.238.306-.356.101-.117.134-.199.202-.333.067-.133.034-.252-.017-.353-.05-.101-.454-1.092-.622-1.499-.164-.395-.343-.341-.454-.341-.117-.006-.252-.006-.388-.006-.136 0-.356.051-.542.253-.187.202-.713.696-.713 1.7 0 1.006.733 1.977.834 2.112.101.135 1.442 2.202 3.492 3.084.488.21 1.012.336 1.393.456.49.155.934.133 1.288.08.395-.06 1.202-.493 1.371-.969.169-.476.169-.885.118-.969-.051-.084-.186-.134-.39-.235"/>
+                                </svg>
+                                WhatsApp:
+                            </strong> 
+                            (31) 9 8590-6833
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div class="postes">
+            <div class="form-container">
+                <h2>Compartilhe sua Ideia ou Relato</h2>
+                <form autocomplete="on">
+                    
+                    <div class="campo-checkbox">
+                        <label>
+                            <input type="checkbox" id="anonimo">
+                            Desejo enviar anonimamente
+                        </label>
+                    </div>
 
-                <div class="linha"></div>
+                    <div class="campo" id="campoNome">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" placeholder="Digite seu nome" autocomplete="name">
+                    </div>
 
-                <div class="icone ativo">
-                    <div class="circulo">🌿</div>
-                    <span>Geração Renovável</span>
-                </div>
+                    <div class="campo" id="campoEmail">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="Digite seu e-mail" autocomplete="email">
+                    </div>
+                    
+                    <div class="campo-linha">
+                        <div class="campo-metade">
+                            <label for="tipo">Tipo de Envio</label>
+                            <select id="tipo" required>
+                                <option value="">Selecione</option>
+                                <option value="ideia">Ideia Sustentável</option>
+                                <option value="problema">Relatar Situação</option>
+                            </select>
+                        </div>
+                        <div class="campo-metade">
+                            <label for="categoria">Categoria</label>
+                            <select id="categoria" required>
+                                <option value="">Selecione</option>
+                                <option>Reciclagem de Metais</option>
+                                <option>Descarbonização</option>
+                                <option>Gestão de Resíduos</option>
+                                <option>Segurança Ambiental</option>
+                                <option>Economia Circular</option>
+                                <option>Outro</option>
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="icone">
-                    <div class="circulo">⚡</div>
-                    <span>Eficiência Energética</span>
-                </div>
+                    <div class="campo">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" placeholder="Resumo da sua contribuição" required>
+                    </div>
 
-                <div class="icone">
-                    <div class="circulo">📊</div>
-                    <span>Monitoramento</span>
-                </div>
+                    <div class="campo">
+                        <label for="descricao">Descrição</label>
+                        <textarea id="descricao" rows="5" placeholder="Descreva sua ideia ou a situação encontrada em detalhes..." required></textarea>
+                    </div>
 
-                <div class="icone">
-                    <div class="circulo">📈</div>
-                    <span>Gestão de Consumo</span>
-                </div>
-
-                <div class="icone">
-                    <div class="circulo">🌎</div>
-                    <span>Sustentabilidade</span>
-                </div>
-
+                    <button type="submit" class="btn-verde">Enviar Contribuição</button>
+                </form>
             </div>
 
-            <!-- QUADRO SOBREPOSTO -->
-            <div class="modal">
+        </div>
+    </section>
 
-                <button class="fechar">✕</button>
+    <div class="modal">
+        <button class="fechar">✕</button>
+        <div class="modal-texto">
+            <h2 id="titulo-modal"></h2>
+            <p id="descricao-modal"></p>
+            <ul id="lista-modal"></ul>
+        </div>
+        <div class="modal-imagem"></div>
+    </div>
 
-                <div class="texto-modal">
+    <footer>
+        <h2>O problema não é o metal. <span>É como lidamos com ele.</span></h2>
+        <p>"Feito por Nathalia de Castro Trindade, - Liga Steam - João Monlevade - 2026"</p>
+    </footer>
 
-                    <h2>Geração Renovável</h2>
-
-                    <p>
-                        Soluções em energia limpa para reduzir emissões,
-                        diminuir custos operacionais e aumentar a
-                        independência energética.
-                    </p>
-
-                    <ul>
-                        <li>Energia Solar</li>
-                        <li>Energia Eólica</li>
-                        <li>Biomassa</li>
-                        <li>Projetos Personalizados</li>
-                    </ul>
-
-                    <button>Saiba Mais</button>
-
-                </div>
-
-                <div class="imagem-modal"></div>
-
-            </div>
-
-        </section>
-
-    </main>
-
+    <script src="script.js"></script>
 </body>
 </html>
