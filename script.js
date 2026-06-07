@@ -30,25 +30,25 @@ const conteudos = {
     triagem: {
         titulo: "Triagem e Classificação",
         descricao: "Tecnologias modernas garantem maior qualidade e reaproveitamento dos metais.",
-        imagem: "natyct.github.io/img/triagem.jpg",
+        imagem: "img/triagem.jpg",
         itens: ["Separação Magnética", "Classificação Automatizada", "Maior Pureza", "Menos Resíduos"]
     },
     circular: {
         titulo: "Economia Circular",
         descricao: "Os materiais retornam ao ciclo produtivo ao invés de se tornarem resíduos.",
-        imagem: "natyct.github.io/img/economia_circular.jpg",
+        imagem: "img/economia_circular.jpg",
         itens: ["Reutilização de Sucatas", "Menor Extração Mineral", "Cadeia de Suprimentos Verde", "Produção Responsável"]
     },
     carbono: {
         titulo: "Descarbonização",
         descricao: "A reciclagem de metais reduz significativamente as emissões de gases poluentes.",
-        imagem: "natyct.github.io/img/emissao_carbono.jpg",
+        imagem: "img/emissao_carbono.jpg",
         itens: ["Redução de CO₂", "Baixo Carbono Industrial", "Menor Consumo Energético", "Metas ESG"]
     },
     impacto: {
         titulo: "Impacto ESG",
         descricao: "Resultados práticos mensurados através de sólidos indicadores ambientais e sociais.",
-        imagem: "natyct.github.io/img/esg.jpg",
+        imagem: "img/esg.jpg",
         itens: ["Relatórios de Transparência", "Indicadores Ambientais", "Ações Sociais Integradas", "Governança Corporativa"]
     }
 };
