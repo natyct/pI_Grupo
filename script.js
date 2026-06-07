@@ -68,7 +68,6 @@ const dados = {
             'Impacto positivo'
         ]
     }
-
 };
 
 icones.forEach(icone => {

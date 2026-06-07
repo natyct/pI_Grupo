@@ -134,9 +134,6 @@ nav a{
 .circulo{
     width:90px;
     height:90px;
-
-    margin:auto;
-
     border-radius:50%;
 
     display:flex;
