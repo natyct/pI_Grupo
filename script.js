@@ -48,7 +48,7 @@ const conteudos = {
     impacto: {
         titulo: "Impacto ESG",
         descricao: "Resultados práticos mensurados através de sólidos indicadores ambientais e sociais.",
-        imagem: "img/esg.jpg",
+        imagem: "img/esg.png",
         itens: ["Relatórios de Transparência", "Indicadores Ambientais", "Ações Sociais Integradas", "Governança Corporativa"]
     }
 };
