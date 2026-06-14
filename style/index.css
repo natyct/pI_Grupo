@@ -882,3 +882,95 @@ footer p {
     }
 
 }
+/* ==========================================
+   MENU MOBILE
+========================================== */
+
+/* Desktop */
+.menu-mobile{
+    display:none;
+}
+
+/* Tablet e Celular */
+@media (max-width:1024px){
+
+    /* Esconde os ícones do header */
+    .icones-container{
+        display:none !important;
+    }
+
+    /* Esconde o quadro do projeto */
+    .quadro-header-projeto{
+        display:none;
+    }
+
+    /* Centraliza a logo */
+    header{
+        height:80px;
+        justify-content:center;
+        padding:0 20px;
+    }
+
+    .logo{
+        width:100%;
+        text-align:center;
+    }
+
+    /* Barra inferior */
+    .menu-mobile{
+        position:fixed;
+        bottom:0;
+        left:0;
+
+        width:100%;
+        height:75px;
+
+        background:#061016;
+
+        display:flex;
+        justify-content:space-around;
+        align-items:center;
+
+        border-top:2px solid rgba(124,255,115,.2);
+
+        box-shadow:0 -5px 20px rgba(0,0,0,.4);
+
+        z-index:99999;
+    }
+
+    .item-mobile{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+
+        color:white;
+        cursor:pointer;
+
+        transition:.3s;
+    }
+
+    .item-mobile:hover{
+        color:#7cff73;
+    }
+
+    .item-mobile.ativo{
+        color:#7cff73;
+    }
+
+    .item-mobile span{
+        font-size:1.4rem;
+        line-height:1;
+    }
+
+    .item-mobile small{
+        font-size:.7rem;
+        margin-top:4px;
+        font-weight:600;
+    }
+
+    /* Espaço para não ficar atrás da barra */
+    body{
+        padding-bottom:80px;
+    }
+}
