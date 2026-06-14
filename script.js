@@ -58,30 +58,6 @@ const conteudos = {
 // ==========================================================================
 // MECANISMO E CONTROLE DOS QUADROS (MODAL)
 // ==========================================================================
-icones.forEach((icone) => {
-    icone.addEventListener("click", (e) => {
-        e.stopPropagation(); 
-        
-        const tema = icone.getAttribute("data-tema");
-        if (!conteudos[tema]) return;
-
-        icones.forEach(item => item.classList.remove("ativo"));
-        icone.classList.add("ativo");
-
-        tituloModal.textContent = conteudos[tema].titulo;
-        descricaoModal.textContent = conteudos[tema].descricao;
-
-        listaModal.innerHTML = "";
-        conteudos[tema].itens.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = item;
-            listaModal.appendChild(li);
-        });
-
-        imagemModal.style.backgroundImage = `url('${conteudos[tema].imagem}')`;
-        modal.style.display = "flex";
-    });
-});
 
 function fecharModal() {
     modal.style.display = "none";
@@ -145,45 +121,90 @@ if (anonimo) {
         }
     });
 }
-itensMobile.forEach(item => {
+const overlayModal = document.querySelector(".overlay-modal");
 
-    item.addEventListener("click", () => {
-
-        const tema = item.dataset.tema;
-
-        abrirModal(tema);
-
-        itensMobile.forEach(i => {
-            i.classList.remove("ativo");
-        });
-
-        item.classList.add("ativo");
-    });
-
-});
 // ==========================================================================
-// Abrir modal em celulares
+// FUNÇÃO ÚNICA PARA ABRIR MODAL
 // ==========================================================================
 function abrirModal(tema){
 
+    if (!conteudos[tema]) return;
+
+    tituloModal.textContent = conteudos[tema].titulo;
+    descricaoModal.textContent = conteudos[tema].descricao;
+
+    listaModal.innerHTML = "";
+
+    conteudos[tema].itens.forEach(item => {
+
+        const li = document.createElement("li");
+        li.textContent = item;
+        listaModal.appendChild(li);
+
+    });
+
+    imagemModal.style.backgroundImage =
+        `url('${conteudos[tema].imagem}')`;
+
+    modal.style.display = "flex";
     modal.classList.add("ativo");
-    overlayModal.classList.add("ativo");
 
-    // resto do código que preenche título, texto e imagem
+    if(overlayModal){
+        overlayModal.classList.add("ativo");
+    }
 }
-// ==========================================================================
-// Fechar o modal em celulares
-// ==========================================================================
-fecharBtn.addEventListener("click", () => {
 
-    modal.classList.remove("ativo");
-    overlayModal.classList.remove("ativo");
+// ==========================================================================
+// DESKTOP
+// ==========================================================================
+icones.forEach((icone) => {
+
+    icone.addEventListener("click", () => {
+
+        abrirModal(icone.dataset.tema);
+
+        icones.forEach(i => i.classList.remove("ativo"));
+        icone.classList.add("ativo");
+
+    });
 
 });
 
-overlayModal.addEventListener("click", () => {
+// ==========================================================================
+// MOBILE
+// ==========================================================================
+itensMobile.forEach((item) => {
 
-    modal.classList.remove("ativo");
-    overlayModal.classList.remove("ativo");
+    item.addEventListener("click", () => {
+
+        abrirModal(item.dataset.tema);
+
+        itensMobile.forEach(i => i.classList.remove("ativo"));
+        item.classList.add("ativo");
+
+    });
 
 });
+
+// ==========================================================================
+// FECHAR MODAL
+// ==========================================================================
+function fecharModal(){
+
+    modal.style.display = "none";
+    modal.classList.remove("ativo");
+
+    if(overlayModal){
+        overlayModal.classList.remove("ativo");
+    }
+
+    icones.forEach(i => i.classList.remove("ativo"));
+    itensMobile.forEach(i => i.classList.remove("ativo"));
+
+}
+
+fechar.addEventListener("click", fecharModal);
+
+if(overlayModal){
+    overlayModal.addEventListener("click", fecharModal);
+}
