@@ -578,7 +578,12 @@ footer p {
         width: 100%;
         max-width: 600px;
     }
+
+    .menu-mobile{
+        display:none;
+    }
 }
+
 /*Tablets*/
 @media(max-width: 768px) {
     .modal {
@@ -606,48 +611,94 @@ footer p {
         text-align: center;
         padding: 30px 20px;
     }
-}
-
-/*Celulares*/
-@media (max-width:768px){
-
-    .hero-topo{
-        padding:180px 20px 60px;
-        justify-content:center;
-        text-align:center;
+        .icones-container{
+        display:none;
     }
 
-    .conteudo-apresentacao{
-        max-width:100%;
-        margin-top:0;
-    }
-
-    .botoes{
+    .menu-mobile{
         display:flex;
-        justify-content:center;
-    }
-
-    .btn-verde{
-        width:100%;
-        max-width:300px;
     }
 
 }
-/*Celulares menores*/ 
-@media (max-width:480px){
 
-    .logo h2{
-        font-size:1.5rem;
+/* MENU MOBILE */
+.menu-mobile{
+    display:none;
+}
+
+/* TABLET E CELULAR */
+@media (max-width:1024px){
+
+    /* remove ícones do topo */
+    .icones-container{
+        display:none !important;
     }
 
-    .circulo{
-        width:50px !important;
-        height:50px !important;
-        font-size:1.2rem;
+    /* opcional: esconder quadro do projeto */
+    .quadro-header-projeto{
+        display:none;
     }
 
-    .icone span{
-        font-size:0.65rem;
+    /* header menor */
+    header{
+        height:80px;
+        padding:0 20px;
+    }
+
+    /* mostra menu inferior */
+    .menu-mobile{
+        display:flex;
+
+        position:fixed;
+        bottom:0;
+        left:0;
+
+        width:100%;
+        height:75px;
+
+        background:#061016;
+
+        border-top:2px solid rgba(124,255,115,.2);
+
+        justify-content:space-around;
+        align-items:center;
+
+        z-index:3000;
+    }
+
+    .item-mobile{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+
+        color:white;
+        cursor:pointer;
+
+        transition:.3s;
+    }
+
+    .item-mobile span{
+        font-size:1.4rem;
+    }
+
+    .item-mobile small{
+        font-size:.7rem;
+        margin-top:4px;
+    }
+
+    .item-mobile.ativo{
+        color:#7cff73;
+    }
+
+    body{
+        padding-bottom:80px;
+    }
+}
+/*Esconder menu em telas menores*/
+@media (max-width:1024px){
+
+    .menu-bloco-direito{
+        display:none;
     }
 
 }

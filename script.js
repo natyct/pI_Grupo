@@ -17,6 +17,8 @@ const campoEmail = document.getElementById("campoEmail");
 
 const btnConhecer = document.querySelector(".btn-conhecer");
 
+const itensMobile = document.querySelectorAll(".item-mobile");
+
 // ==========================================================================
 // CONTEÚDOS DINÂMICOS DOS QUADROS (ÍCONES / MENU)
 // ==========================================================================
@@ -143,3 +145,19 @@ if (anonimo) {
         }
     });
 }
+itensMobile.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        const tema = item.dataset.tema;
+
+        abrirModal(tema);
+
+        itensMobile.forEach(i => {
+            i.classList.remove("ativo");
+        });
+
+        item.classList.add("ativo");
+    });
+
+});
