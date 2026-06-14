@@ -582,7 +582,7 @@ footer p {
     }
 
     .menu-mobile{
-        display:none;
+        display:flex;
         z-index: 4000;
     }
 }
