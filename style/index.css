@@ -435,15 +435,19 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1050px;            
-    height: 560px;                
+
+    width: 1050px;
+    height: 560px;
+
     background: #061016;
-    border: 2.5px solid #7cff73;  
-    border-radius: 16px;          
-    display: none;
-    z-index: 2000;
-    box-shadow: 0 30px 70px rgba(0,0,0,0.85);
+    border: 2px solid #7cff73;
+    border-radius: 16px;
+
     overflow: hidden;
+
+    z-index: 99999;
+
+    display: none; /* IMPORTANTE */
 }
 
 .modal-texto {
@@ -546,182 +550,28 @@ footer p {
     font-size: 0.85rem;
     color: #6c757d;
 }
+.overlay-modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.7);
 
-/* ==========================================================================
-   RESPONSIVIDADE
-   ========================================================================== */
-@media(max-width: 1250px) {
-    header {
-        padding: 15px 40px;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-    .hero-topo {
-        padding-left: 40px;
-        padding-right: 40px;
-        justify-content: center;
-        text-align: center;
-    }
-    .conteudo-apresentacao {
-        margin-top: 100px;
-    }
-    .conteudo-apresentacao h1 {
-        font-size: 2.8rem;
-    }
-    .secao-inferior {
-        padding: 60px 40px;
-    }
-    .container-duplo {
-        flex-direction: column;
-        align-items: center;
-    }
-    .coluna-contato, .form-container {
-        width: 100%;
-        max-width: 600px;
-    }
+    opacity: 0;
+    visibility: hidden;
 
-    .menu-mobile{
-        display:flex;
-        z-index: 4000;
-    }
+    transition: .3s;
+    z-index: 99998;
 }
 
-/*Tablets*/
-@media(max-width: 768px) {
-    .modal {
-        width: 90%;
-        height: auto;
-        flex-direction: column;
-    }
-    .modal-texto, .modal-imagem {
-        width: 100%;
-    }
-    .modal-imagem {
-        height: 180px;
-    }
-    .campo-linha {
-        flex-wrap:wrap;
-        flex-direction: column;
-        gap: 0;
-    }
-    .campo-metade{
-        min-width:250px;
-    }
-    footer {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-        padding: 30px 20px;
-    }
-        .icones-container{
-        display:none;
-    }
-
-    .menu-mobile{
-        display:flex;
-        z-index: 4000;
-    }
-
+.overlay-modal.ativo{
+    opacity: 1;
+    visibility: visible;
 }
-/* Desktop */
-.modal.ativo{
-    display:flex;
-}
-/* ==========================================
-   MENU MOBILE
-========================================== */
-
-/* Escondido no desktop */
-.menu-mobile{
+.modal{
     display:none;
 }
 
-/* Tablet e celular */
-@media screen and (max-width:1024px){
-
-    /* Esconde os ícones do header */
-    .icones-container{
-        display:none !important;
-    }
-
-    /* Esconde o quadro verde */
-    .quadro-header-projeto{
-        display:none !important;
-    }
-
-    /* Centraliza a logo */
-    header{
-        height:80px;
-        justify-content:center;
-        padding:0 20px;
-    }
-
-    .menu-bloco-direito{
-        display:none;
-    }
-
-    .logo{
-        width:100%;
-        text-align:center;
-    }
-
-    .logo h2{
-        font-size:2rem;
-    }
-
-    /* Barra inferior */
-    .menu-mobile{
-        display:flex !important;
-
-        position:fixed;
-        bottom:0;
-        left:0;
-
-        width:100%;
-        height:75px;
-
-        background:#061016;
-
-        justify-content:space-around;
-        align-items:center;
-
-        border-top:2px solid rgba(124,255,115,.2);
-
-        box-shadow:0 -5px 20px rgba(0,0,0,.5);
-
-        z-index:99999;
-    }
-
-    .item-mobile{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-
-        color:white;
-
-        cursor:pointer;
-    }
-
-    .item-mobile span{
-        font-size:1.4rem;
-        line-height:1;
-    }
-
-    .item-mobile small{
-        margin-top:4px;
-        font-size:.7rem;
-        font-weight:600;
-    }
-
-    .item-mobile.ativo{
-        color:#7cff73;
-    }
-
-    body{
-        padding-bottom:85px;
-    }
+.modal.ativo{
+    display:flex;
 }
 /* ==========================================================================
    RESPONSIVIDADE
@@ -774,21 +624,17 @@ footer p {
 /* ==========================================================================
    TABLET E CELULAR
    ========================================================================== */
-
 @media (max-width:1024px){
 
-    /* Esconde ícones do header */
     .icones-container{
         display:none !important;
     }
 
-    /* Mostra menu inferior */
     .menu-mobile{
         display:flex;
         z-index:4000;
     }
 
-    /* Header simplificado */
     .menu-bloco-direito{
         display:none;
     }
@@ -807,32 +653,11 @@ footer p {
         padding-bottom:85px;
     }
 
-    /* Modal mobile */
     .modal{
-        position:fixed;
-
-        left:0;
-        bottom:-100%;
-
-        top:auto;
-
-        transform:none;
-
-        width:100%;
-        height:75vh;
-
-        border-radius:25px 25px 0 0;
-
-        display:flex;
-        flex-direction:column;
-
-        transition:.4s ease;
-
-        z-index:4000;
-    }
-
-    .modal.ativo{
-        bottom:0;
+        width:95%;
+        max-width:600px;
+        height:auto;
+        max-height:80vh;
     }
 
     .modal-texto{
@@ -842,39 +667,9 @@ footer p {
     }
 
     .modal-imagem{
-        width:100%;
-        height:220px;
-
-        border-left:none;
-        border-top:1px solid rgba(255,255,255,.05);
-    }
-
-    .fechar{
-        top:15px;
-        right:15px;
-    }
-
-    .overlay-modal{
-        position:fixed;
-        inset:0;
-
-        background:rgba(0,0,0,.7);
-
-        opacity:0;
-        visibility:hidden;
-
-        transition:.3s;
-
-        z-index:3500;
-    }
-
-    .overlay-modal.ativo{
-        opacity:1;
-        visibility:visible;
+        display:none;
     }
 }
-
-
 /* ==========================================================================
    CELULAR
    ========================================================================== */

@@ -139,11 +139,9 @@ function abrirModal(tema){
     listaModal.innerHTML = "";
 
     conteudos[tema].itens.forEach(item => {
-
         const li = document.createElement("li");
         li.textContent = item;
         listaModal.appendChild(li);
-
     });
 
     imagemModal.style.backgroundImage =
@@ -151,15 +149,12 @@ function abrirModal(tema){
 
     modal.style.display = "flex";
 
-    if(window.innerWidth <= 1024){
-        modal.classList.add("ativo");
-    }
+    modal.classList.add("ativo");
 
     if(overlayModal){
         overlayModal.classList.add("ativo");
     }
 }
-
 // ==========================================================================
 // DESKTOP
 // ==========================================================================
@@ -202,26 +197,10 @@ function fecharModal(){
     modal.style.display = "none";
     modal.classList.remove("ativo");
 
-    if(overlayModal){
+    if (overlayModal) {
         overlayModal.classList.remove("ativo");
     }
 
     icones.forEach(i => i.classList.remove("ativo"));
     itensMobile.forEach(i => i.classList.remove("ativo"));
 }
-
-if(fechar){
-    fechar.addEventListener("click", fecharModal);
-}
-
-if(overlayModal){
-    overlayModal.addEventListener("click", fecharModal);
-}
-
-document.addEventListener("keydown", (e) => {
-
-    if(e.key === "Escape"){
-        fecharModal();
-    }
-
-});
