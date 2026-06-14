@@ -161,3 +161,29 @@ itensMobile.forEach(item => {
     });
 
 });
+// ==========================================================================
+// Abrir modal em celulares
+// ==========================================================================
+function abrirModal(tema){
+
+    modal.classList.add("ativo");
+    overlayModal.classList.add("ativo");
+
+    // resto do código que preenche título, texto e imagem
+}
+// ==========================================================================
+// Fechar o modal em celulares
+// ==========================================================================
+fecharBtn.addEventListener("click", () => {
+
+    modal.classList.remove("ativo");
+    overlayModal.classList.remove("ativo");
+
+});
+
+overlayModal.addEventListener("click", () => {
+
+    modal.classList.remove("ativo");
+    overlayModal.classList.remove("ativo");
+
+});

@@ -172,18 +172,20 @@ header {
    PRIMEIRA PARTE: HERO DE APRESENTAÇÃO (TELA CHEIA)
    ========================================================================== */
 .hero-topo {
+    display:flex;
+    align-items:flex-start;
+    padding-top:150px;
     background-image: url("../img/background.png");
-    position: relative;
+    position:relative;
+
+    width:100%;
     min-height:100vh;
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    padding:40px 20px;
-    padding-left: 80px;
+
+    padding-top:125px;
+    padding-left:80px;
+
+    background-size:cover;
+    background-position:center;
 }
 
 .overlay {
@@ -202,11 +204,11 @@ header {
 }
 
 .conteudo-apresentacao {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 700px;
-    margin-top: 140px;
+    position:relative;
+    z-index:10;
+    width:100%;
+    max-width:700px;
+    margin-top:0;
 }
 
 .tag {
@@ -620,85 +622,258 @@ footer p {
     }
 
 }
-
-/* MENU MOBILE */
-.menu-mobile{
-    display:none;
+/* Desktop */
+.modal.ativo{
+    display:flex;
 }
 
-/* TABLET E CELULAR */
+/* Mobile */
 @media (max-width:1024px){
 
-    /* remove ícones do topo */
+    .modal{
+        display:flex;
+        bottom:-100%;
+    }
+
+    .modal.ativo{
+        bottom:0;
+    }
+
+}/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width:1250px){
+
+    header{
+        padding:15px 40px;
+        flex-direction:column;
+        align-items:center;
+        gap:15px;
+    }
+
+    .hero-topo{
+        padding-left:40px;
+        padding-right:40px;
+        justify-content:center;
+        text-align:center;
+    }
+
+    .conteudo-apresentacao{
+        position:relative;
+        z-index:10;
+        width:100%;
+        max-width:700px;
+    }
+
+    .conteudo-apresentacao h1{
+        font-size:2.8rem;
+    }
+
+    .secao-inferior{
+        padding:60px 40px;
+    }
+
+    .container-duplo{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .coluna-contato,
+    .form-container{
+        width:100%;
+        max-width:600px;
+    }
+}
+
+
+/* ==========================================================================
+   TABLET E CELULAR
+   ========================================================================== */
+
+@media (max-width:1024px){
+
+    /* Esconde ícones do header */
     .icones-container{
         display:none !important;
     }
 
-    /* opcional: esconder quadro do projeto */
-    .quadro-header-projeto{
+    /* Mostra menu inferior */
+    .menu-mobile{
+        display:flex;
+    }
+
+    /* Header simplificado */
+    .menu-bloco-direito{
         display:none;
     }
 
-    /* header menor */
     header{
         height:80px;
+        justify-content:center;
         padding:0 20px;
     }
 
-    /* mostra menu inferior */
-    .menu-mobile{
-        display:flex;
-
-        position:fixed;
-        bottom:0;
-        left:0;
-
-        width:100%;
-        height:75px;
-
-        background:#061016;
-
-        border-top:2px solid rgba(124,255,115,.2);
-
-        justify-content:space-around;
-        align-items:center;
-
-        z-index:3000;
-    }
-
-    .item-mobile{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-
-        color:white;
-        cursor:pointer;
-
-        transition:.3s;
-    }
-
-    .item-mobile span{
-        font-size:1.4rem;
-    }
-
-    .item-mobile small{
-        font-size:.7rem;
-        margin-top:4px;
-    }
-
-    .item-mobile.ativo{
-        color:#7cff73;
+    .logo{
+        text-align:center;
     }
 
     body{
-        padding-bottom:80px;
+        padding-bottom:85px;
+    }
+
+    /* Modal mobile */
+    .modal{
+        position:fixed;
+
+        left:0;
+        bottom:-100%;
+
+        top:auto;
+
+        transform:none;
+
+        width:100%;
+        height:75vh;
+
+        border-radius:25px 25px 0 0;
+
+        display:flex;
+        flex-direction:column;
+
+        transition:.4s ease;
+
+        z-index:4000;
+    }
+
+    .modal.ativo{
+        bottom:0;
+    }
+
+    .modal-texto{
+        width:100%;
+        padding:25px;
+        overflow-y:auto;
+    }
+
+    .modal-imagem{
+        width:100%;
+        height:220px;
+
+        border-left:none;
+        border-top:1px solid rgba(255,255,255,.05);
+    }
+
+    .fechar{
+        top:15px;
+        right:15px;
+    }
+
+    .overlay-modal{
+        position:fixed;
+        inset:0;
+
+        background:rgba(0,0,0,.7);
+
+        opacity:0;
+        visibility:hidden;
+
+        transition:.3s;
+
+        z-index:3500;
+    }
+
+    .overlay-modal.ativo{
+        opacity:1;
+        visibility:visible;
     }
 }
-/*Esconder menu em telas menores*/
-@media (max-width:1024px){
 
-    .menu-bloco-direito{
-        display:none;
+
+/* ==========================================================================
+   CELULAR
+   ========================================================================== */
+
+@media (max-width:768px){
+
+    .hero-topo{
+        padding:140px 20px 60px;
+        justify-content:center;
+        text-align:center;
+    }
+
+    .conteudo-apresentacao{
+        max-width:100%;
+        margin-top:0;
+    }
+
+    .conteudo-apresentacao h1{
+        font-size:2.2rem;
+    }
+
+    .conteudo-apresentacao p{
+        font-size:1rem;
+    }
+
+    .botoes{
+        justify-content:center;
+    }
+
+    .btn-verde{
+        width:100%;
+        max-width:300px;
+    }
+
+    .campo-linha{
+        flex-direction:column;
+        gap:0;
+    }
+
+    .tag{
+        display:inline-block;
+        max-width:100%;
+
+        font-size:0.7rem;
+        padding:8px 12px;
+
+        white-space:normal;
+        word-break:break-word;
+
+        line-height:1.4;
+    }
+    .campo-metade{
+        min-width:100%;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+        padding:30px 20px;
+    }
+}
+
+
+/* ==========================================================================
+   CELULARES PEQUENOS
+   ========================================================================== */
+
+@media (max-width:480px){
+
+    .logo h2{
+        font-size:1.6rem;
+    }
+
+    .menu-mobile{
+        height:75px;
+    }
+
+    .item-mobile span{
+        font-size:1.3rem;
+    }
+
+    .item-mobile small{
+        font-size:.65rem;
     }
 
 }
