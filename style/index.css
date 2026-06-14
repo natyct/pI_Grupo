@@ -583,6 +583,7 @@ footer p {
 
     .menu-mobile{
         display:none;
+        z-index: 4000;
     }
 }
 
@@ -619,6 +620,7 @@ footer p {
 
     .menu-mobile{
         display:flex;
+        z-index: 4000;
     }
 
 }
@@ -701,6 +703,7 @@ footer p {
     /* Mostra menu inferior */
     .menu-mobile{
         display:flex;
+        z-index:4000;
     }
 
     /* Header simplificado */
@@ -841,6 +844,7 @@ footer p {
 
         line-height:1.4;
     }
+
     .campo-metade{
         min-width:100%;
     }
@@ -866,6 +870,7 @@ footer p {
 
     .menu-mobile{
         height:75px;
+        z-index:4000;
     }
 
     .item-mobile span{
