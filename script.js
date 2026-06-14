@@ -19,6 +19,9 @@ const btnConhecer = document.querySelector(".btn-conhecer");
 
 const itensMobile = document.querySelectorAll(".item-mobile");
 
+const overlayModal = document.querySelector(".overlay-modal");
+const fecharBtn = document.querySelector(".fechar");
+
 // ==========================================================================
 // CONTEÚDOS DINÂMICOS DOS QUADROS (ÍCONES / MENU)
 // ==========================================================================
@@ -121,14 +124,14 @@ if (anonimo) {
         }
     });
 }
-const overlayModal = document.querySelector(".overlay-modal");
 
 // ==========================================================================
-// FUNÇÃO ÚNICA PARA ABRIR MODAL
+// FUNÇÃO ÚNICA PARA ABRIR O MODAL
 // ==========================================================================
+
 function abrirModal(tema){
 
-    if (!conteudos[tema]) return;
+    if(!conteudos[tema]) return;
 
     tituloModal.textContent = conteudos[tema].titulo;
     descricaoModal.textContent = conteudos[tema].descricao;
@@ -147,7 +150,10 @@ function abrirModal(tema){
         `url('${conteudos[tema].imagem}')`;
 
     modal.style.display = "flex";
-    modal.classList.add("ativo");
+
+    if(window.innerWidth <= 1024){
+        modal.classList.add("ativo");
+    }
 
     if(overlayModal){
         overlayModal.classList.add("ativo");
@@ -157,6 +163,7 @@ function abrirModal(tema){
 // ==========================================================================
 // DESKTOP
 // ==========================================================================
+
 icones.forEach((icone) => {
 
     icone.addEventListener("click", () => {
@@ -173,6 +180,7 @@ icones.forEach((icone) => {
 // ==========================================================================
 // MOBILE
 // ==========================================================================
+
 itensMobile.forEach((item) => {
 
     item.addEventListener("click", () => {
@@ -200,11 +208,20 @@ function fecharModal(){
 
     icones.forEach(i => i.classList.remove("ativo"));
     itensMobile.forEach(i => i.classList.remove("ativo"));
-
 }
 
-fechar.addEventListener("click", fecharModal);
+if(fechar){
+    fechar.addEventListener("click", fecharModal);
+}
 
 if(overlayModal){
     overlayModal.addEventListener("click", fecharModal);
 }
+
+document.addEventListener("keydown", (e) => {
+
+    if(e.key === "Escape"){
+        fecharModal();
+    }
+
+});
