@@ -566,6 +566,16 @@ footer p {
 .modal.ativo{
     display:flex;
 }
+
+.modal-imagem {
+    width: 50%;
+    height: 100%;
+    background-size: cover; /* Garante que preenche tudo no PC */
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+
 @media (max-width: 1024px) {
     /* 1. Ajustes do Cabeçalho */
     .menu-bloco-direito {
@@ -694,15 +704,21 @@ footer p {
         overflow: hidden !important;
     }
 
-    .modal-imagem {
+.modal-imagem {
         width: 100% !important;
         height: 170px !important;
         min-height: 170px !important;
         display: block !important;
-        order: 1 !important;
+        order: 1 !important; /* Mantém a foto no topo do celular */
         border-left: none !important;
-        background-size: cover !important;
-        background-position: center !important;
+        
+        /* ==========================================================================
+           APENAS PARA CELULAR: ENCAIXA TODOS SEM CORTAR OS LADOS
+           ========================================================================== */
+        background-size: contain !important;     /* Força Coleta, Triagem, Circular, Carbono e ESG a ficarem inteiros */
+        background-repeat: no-repeat !important;  /* Impede que a foto fique se duplicando */
+        background-position: center !important;   /* Centraliza a imagem perfeitamente no topo */
+        background-color: #02090d !important;    /* Preenche o fundo que sobrar com o preto padrão do site */
     }
 
     .modal-texto {
@@ -737,3 +753,4 @@ footer p {
         padding: 20px 10px 90px 10px;
     }
 }
+
