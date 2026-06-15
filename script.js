@@ -2,8 +2,10 @@
 // ELEMENTOS DO SISTEMA
 // ==========================================================================
 const icones = document.querySelectorAll(".icone");
+const itensMobile = document.querySelectorAll(".item-mobile");
 const modal = document.querySelector(".modal");
-const fechar = document.querySelector(".fechar");
+const overlayModal = document.querySelector(".overlay-modal");
+const fecharBtn = document.querySelector(".fechar");
 
 const tituloModal = document.getElementById("titulo-modal");
 const descricaoModal = document.getElementById("descricao-modal");
@@ -16,11 +18,6 @@ const campoNome = document.getElementById("campoNome");
 const campoEmail = document.getElementById("campoEmail");
 
 const btnConhecer = document.querySelector(".btn-conhecer");
-
-const itensMobile = document.querySelectorAll(".item-mobile");
-
-const overlayModal = document.querySelector(".overlay-modal");
-const fecharBtn = document.querySelector(".fechar");
 
 // ==========================================================================
 // CONTEÚDOS DINÂMICOS DOS QUADROS (ÍCONES / MENU)
@@ -59,37 +56,94 @@ const conteudos = {
 };
 
 // ==========================================================================
-// MECANISMO E CONTROLE DOS QUADROS (MODAL)
+// FUNÇÕES DE CONTROLE DO MODAL
 // ==========================================================================
 
-function fecharModal() {
-    modal.style.display = "none";
-    icones.forEach(item => item.classList.remove("ativo"));
+function abrirModal(tema) {
+    if (!conteudos[tema]) return;
+
+    // Injeta os textos dinâmicos
+    tituloModal.textContent = conteudos[tema].titulo;
+    descricaoModal.textContent = conteudos[tema].descricao;
+
+    // Limpa e reconstrói a lista de benefícios
+    listaModal.innerHTML = "";
+    conteudos[tema].itens.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        listaModal.appendChild(li);
+    });
+
+    // Injeta a imagem de fundo
+    imagemModal.style.backgroundImage = `url('${conteudos[tema].imagem}')`;
+    // ==========================================
+    modal.style.display = "flex";
+    // Ativa as classes do CSS para exibir com efeito visual
+    modal.classList.add("ativo");
+    if (overlayModal) {
+        overlayModal.classList.add("ativo");
+    }
 }
 
-if (fechar) fechar.addEventListener("click", fecharModal);
+function fecharModal() {
+    // Remove as classes ativos do CSS
+    // Esconde o elemento novamente
+    modal.style.display = "none";
+    // Remove as classes ativos do CSS
+    modal.classList.remove("ativo");
+    if (overlayModal) {
+        overlayModal.classList.remove("ativo");
+    }
 
+    // Desmarca os ícones ativos 
+    icones.forEach(i => i.classList.remove("ativo"));
+    itensMobile.forEach(i => i.classList.remove("ativo"));
+}
+
+// ==========================================================================
+// EVENTOS DE CLIQUE — ABRE MODAL (DESKTOP E MOBILE)
+// ==========================================================================
+
+icones.forEach((icone) => {
+    icone.addEventListener("click", () => {
+        abrirModal(icone.dataset.tema);
+        icones.forEach(i => i.classList.remove("ativo"));
+        icone.classList.add("ativo");
+    });
+});
+
+itensMobile.forEach((item) => {
+    item.addEventListener("click", () => {
+        abrirModal(item.dataset.tema);
+        itensMobile.forEach(i => i.classList.remove("ativo"));
+        item.classList.add("ativo");
+    });
+});
+
+// ==========================================================================
+// EVENTOS DE FECHAMENTO DO MODAL
+// ==========================================================================
+
+// Fecha pelo botão "X"
+if (fecharBtn) fecharBtn.addEventListener("click", fecharModal);
+
+// Fecha clicando fora do modal (no overlay escuro)
+if (overlayModal) overlayModal.addEventListener("click", fecharModal);
+
+// Fecha pressionando a tecla ESC
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") fecharModal();
 });
 
-document.addEventListener("click", (e) => {
-    if (modal.style.display === "flex" && !modal.contains(e.target)) {
-        fecharModal();
-    }
-});
-
 // ==========================================================================
-// CONTROLE DO BOTÃO "QUERO CONTRIBUIR" (ROLA A TELA)
+// CONTROLE DO BOTÃO "QUERO CONTRIBUIR" (ROLAGEM SUAVE)
 // ==========================================================================
 if (btnConhecer) {
     btnConhecer.addEventListener("click", () => {
         const areaInterativa = document.getElementById("area-interativa");
         if (areaInterativa) {
-            // Executa a rolagem suave até a segunda parte da tela
             areaInterativa.scrollIntoView({ behavior: "smooth" });
             
-            // Foca o cursor no formulário após a rolagem terminar
             setTimeout(() => {
                 const campoTipo = document.getElementById("tipo");
                 if (campoTipo) campoTipo.focus();
@@ -123,84 +177,4 @@ if (anonimo) {
             campoEmail.style.display = "flex";
         }
     });
-}
-
-// ==========================================================================
-// FUNÇÃO ÚNICA PARA ABRIR O MODAL
-// ==========================================================================
-
-function abrirModal(tema){
-
-    if(!conteudos[tema]) return;
-
-    tituloModal.textContent = conteudos[tema].titulo;
-    descricaoModal.textContent = conteudos[tema].descricao;
-
-    listaModal.innerHTML = "";
-
-    conteudos[tema].itens.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        listaModal.appendChild(li);
-    });
-
-    imagemModal.style.backgroundImage =
-        `url('${conteudos[tema].imagem}')`;
-
-    modal.style.display = "flex";
-
-    modal.classList.add("ativo");
-
-    if(overlayModal){
-        overlayModal.classList.add("ativo");
-    }
-}
-// ==========================================================================
-// DESKTOP
-// ==========================================================================
-
-icones.forEach((icone) => {
-
-    icone.addEventListener("click", () => {
-
-        abrirModal(icone.dataset.tema);
-
-        icones.forEach(i => i.classList.remove("ativo"));
-        icone.classList.add("ativo");
-
-    });
-
-});
-
-// ==========================================================================
-// MOBILE
-// ==========================================================================
-
-itensMobile.forEach((item) => {
-
-    item.addEventListener("click", () => {
-
-        abrirModal(item.dataset.tema);
-
-        itensMobile.forEach(i => i.classList.remove("ativo"));
-        item.classList.add("ativo");
-
-    });
-
-});
-
-// ==========================================================================
-// FECHAR MODAL
-// ==========================================================================
-function fecharModal(){
-
-    modal.style.display = "none";
-    modal.classList.remove("ativo");
-
-    if (overlayModal) {
-        overlayModal.classList.remove("ativo");
-    }
-
-    icones.forEach(i => i.classList.remove("ativo"));
-    itensMobile.forEach(i => i.classList.remove("ativo"));
 }

@@ -473,23 +473,16 @@ header {
 }
 
 .modal-texto ul {
-    list-style: none;
+    list-style: disc;
+    padding-left:20px;
+
 }
 
 .modal-texto ul li {
     color: #fff;
     margin-bottom: 14px;          
     font-size: 1.05rem;              
-    display: flex;
-    align-items: center;
     gap: 14px;
-}
-
-.modal-texto ul li::before {
-    content: "▪";
-    color: #7cff73;
-    font-weight: bold;
-    font-size: 1.4rem;
 }
 
 .modal-imagem {
@@ -574,188 +567,125 @@ footer p {
     display:flex;
 }
 /* ==========================================================================
-   RESPONSIVIDADE
-========================================================================== */
+   RESPONSIVIDADE E BARRA FIXA INFERIOR (SUBSTITUA AS MEDIA QUERIES ANTERIORES)
+   ========================================================================== */
 
-@media (max-width:1250px){
-
-    header{
-        padding:15px 40px;
-        flex-direction:column;
-        align-items:center;
-        gap:15px;
+@media (max-width: 1024px) {
+    /* Esconde o menu do topo */
+    .menu-bloco-direito {
+        display: none !important;
     }
 
-    .hero-topo{
-        padding-left:40px;
-        padding-right:40px;
-        justify-content:center;
-        text-align:center;
+    header {
+        height: 80px;
+        justify-content: center;
+        padding: 0 20px;
     }
 
-    .conteudo-apresentacao{
-        position:relative;
-        z-index:10;
-        width:100%;
-        max-width:700px;
+    /* Transforma o menu mobile em uma barra fixa no rodapé */
+    .menu-mobile {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background: rgba(2, 9, 13, 0.95);
+        backdrop-filter: blur(10px);
+        border-top: 2px solid rgba(255, 255, 255, 0.08);
+        z-index: 99999; /* Garante que fica por cima de tudo */
+        padding: 5px 0;
     }
 
-    .conteudo-apresentacao h1{
-        font-size:2.8rem;
+    .item-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex: 1;
+        color: rgba(255, 255, 255, 0.7);
+        transition: all 0.2s ease;
     }
 
-    .secao-inferior{
-        padding:60px 40px;
+    .item-mobile span {
+        font-size: 1.4rem;
+        margin-bottom: 2px;
     }
 
-    .container-duplo{
-        flex-direction:column;
-        align-items:center;
+    .item-mobile small {
+        font-size: 0.7rem;
+        font-weight: 600;
     }
 
-    .coluna-contato,
-    .form-container{
-        width:100%;
-        max-width:600px;
+    /* Destaca o ícone do menu quando estiver ativo ou clicado */
+    .item-mobile.ativo {
+        color: #7cff73;
+    }
+
+    /* Garante que o conteúdo da página não fique escondido atrás da barra fixa */
+    body {
+        padding-bottom: 80px;
+    }
+
+    /* RECONFIGURAÇÃO DO MODAL PARA CELULAR (IMAGEM + TEXTO) */
+    .modal {
+        width: 90%;
+        height: auto;
+        max-height: 85vh;
+        flex-direction: column; /* Empilha a imagem e o texto verticalmente */
+        border-radius: 12px;
+    }
+
+    /* Imagem agora fica no topo do modal */
+    .modal-imagem {
+        width: 100%;
+        height: 180px; /* Define uma altura fixa para a foto no celular */
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: block !important; /* Força a imagem a aparecer */
+    }
+
+    /* Texto fica na parte de baixo do modal */
+    .modal-texto {
+        width: 100%;
+        padding: 20px 25px;
+        overflow-y: auto; /* Se o texto for grande, rola apenas esta parte */
+    }
+
+    .modal-texto h2 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .modal-texto p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .modal-texto ul li {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
     }
 }
 
-
-/* ==========================================================================
-   TABLET E CELULAR
-   ========================================================================== */
-@media (max-width:1024px){
-
-    .icones-container{
-        display:none !important;
+@media (max-width: 480px) {
+    .modal {
+        width: 95%;
+        max-height: 90vh;
     }
 
-    .menu-mobile{
-        display:flex;
-        z-index:4000;
+    .modal-imagem {
+        height: 140px; 
     }
 
-    .menu-bloco-direito{
-        display:none;
+    .modal-texto {
+        padding: 15px 20px;
     }
 
-    header{
-        height:80px;
-        justify-content:center;
-        padding:0 20px;
+    .modal-texto h2 {
+        font-size: 1.4rem;
     }
-
-    .logo{
-        text-align:center;
-    }
-
-    body{
-        padding-bottom:85px;
-    }
-
-    .modal{
-        width:95%;
-        max-width:600px;
-        height:auto;
-        max-height:80vh;
-    }
-
-    .modal-texto{
-        width:100%;
-        padding:25px;
-        overflow-y:auto;
-    }
-
-    .modal-imagem{
-        display:none;
-    }
-}
-/* ==========================================================================
-   CELULAR
-   ========================================================================== */
-
-@media (max-width:768px){
-
-    .hero-topo{
-        padding:140px 20px 60px;
-        justify-content:center;
-        text-align:center;
-    }
-
-    .conteudo-apresentacao{
-        max-width:100%;
-        margin-top:0;
-    }
-
-    .conteudo-apresentacao h1{
-        font-size:2.2rem;
-    }
-
-    .conteudo-apresentacao p{
-        font-size:1rem;
-    }
-
-    .botoes{
-        justify-content:center;
-    }
-
-    .btn-verde{
-        width:100%;
-        max-width:300px;
-    }
-
-    .campo-linha{
-        flex-direction:column;
-        gap:0;
-    }
-
-    .tag{
-        display:inline-block;
-        max-width:100%;
-
-        font-size:0.7rem;
-        padding:8px 12px;
-
-        white-space:normal;
-        word-break:break-word;
-
-        line-height:1.4;
-    }
-
-    .campo-metade{
-        min-width:100%;
-    }
-
-    footer{
-        flex-direction:column;
-        gap:15px;
-        text-align:center;
-        padding:30px 20px;
-    }
-}
-
-
-/* ==========================================================================
-   CELULARES PEQUENOS
-   ========================================================================== */
-
-@media (max-width:480px){
-
-    .logo h2{
-        font-size:1.6rem;
-    }
-
-    .menu-mobile{
-        height:75px;
-        z-index:4000;
-    }
-
-    .item-mobile span{
-        font-size:1.3rem;
-    }
-
-    .item-mobile small{
-        font-size:.65rem;
-    }
-
 }
