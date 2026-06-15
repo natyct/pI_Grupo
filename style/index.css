@@ -569,11 +569,10 @@ footer p {
 /* ==========================================================================
    RESPONSIVIDADE E BARRA FIXA INFERIOR (SUBSTITUA AS MEDIA QUERIES ANTERIORES)
    ========================================================================== */
-
 @media (max-width: 1024px) {
-    /* 1. Ajustes do Cabeçalho */
+    /* Esconde o menu do topo no celular */
     .menu-bloco-direito {
-        display: none !important; /* Esconde o menu desktop no celular */
+        display: none !important; 
     }
 
     header {
@@ -584,7 +583,7 @@ footer p {
         padding: 0 15px;
     }
 
-    /* 2. Barra Fixa Inferior de Ícones */
+    /* Barra Fixa Inferior */
     .menu-mobile {
         display: flex !important;
         justify-content: space-around;
@@ -625,43 +624,55 @@ footer p {
 
     /* Evita que o rodapé suma atrás da barra fixa */
     body {
-        padding-bottom: 75px;
+        padding-bottom: 85px;
     }
 
-    /* 3. Hero / Seção Inicial */
+    /* Ajuste da Hero inicial */
     .hero-topo {
         padding: 60px 20px;
-        text-align: center;
     }
 
     .conteudo-apresentacao h1 {
         font-size: 2rem !important;
-        line-height: 1.3;
     }
 
-    .conteudo-apresentacao p {
-        font-size: 1rem !important;
+    /* CORREÇÃO DOS QUADROS ESTREITOS (Canais de Contato e Formulário) */
+    .secao-inferior {
+        padding: 30px 10px !important;
     }
 
-    /* 4. Área Interativa (Onde estava tudo quebrado) */
     .container-duplo {
-        display: flex;
-        flex-direction: column; /* Empilha os blocos verticalmente */
-        gap: 30px;
-        padding: 20px 15px;
+        display: flex !important;
+        flex-direction: column !important; /* Empilha um embaixo do outro no celular */
         width: 100% !important;
-        box-sizing: border-box;
+        max-width: 100% !important;
+        gap: 25px !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
     }
 
-    .coluna-contato, .form-container {
-        width: 100% !important; /* Ocupa a largura total da tela do celular */
-        box-sizing: border-box;
+    .coluna-contato, 
+    .form-container,
+    .quadro-contato,
+    .manifesto-mini {
+        width: 100% !important; /* Força a ocupar toda a largura disponível da tela */
+        max-width: 100% !important;
+        display: block !important;
+        box-sizing: border-box !important;
     }
 
-    /* Ajuste para os campos do formulário não esmagarem */
+    /* Organização interna dos Canais de Contato */
+    .info-contato p {
+        display: block !important;
+        margin-bottom: 15px !important;
+        font-size: 1.05rem !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Ajuste para os campos do formulário */
     .campo-linha {
         display: flex;
-        flex-direction: row; /* Mantém Tipo e Categoria lado a lado se couber */
+        flex-direction: row;
         gap: 10px;
     }
 
@@ -669,51 +680,57 @@ footer p {
         flex: 1;
     }
 
-    .form-container input, 
-    .form-container select, 
-    .form-container textarea {
-        width: 100% !important;
-        box-sizing: border-box;
-        font-size: 1rem; /* Melhora a leitura e evita zoom automático no iOS */
-        padding: 10px;
-    }
-
-    /* 5. Correção do Modal no Celular */
+    /* CORREÇÃO DO MODAL (Imagem no topo e texto embaixo sem esmagar) */
     .modal {
-        width: 92% !important;
+        width: 90% !important;
         height: auto !important;
-        max-height: 85vh;
-        flex-direction: column !important;
-        border-radius: 12px;
-        overflow: hidden;
+        max-height: 80vh !important; /* Limita a altura para não vazar da tela */
+        flex-direction: column !important; /* Imagem em cima, texto embaixo */
+        border-radius: 14px !important;
+        overflow: hidden !important;
     }
 
     .modal-imagem {
         width: 100% !important;
-        height: 150px !important;
+        height: 180px !important; /* Altura fixa garantida para a foto aparecer linda */
+        min-height: 180px !important;
         display: block !important;
-        border-left: none;
+        order: 1 !important; /* Força a imagem a ser a primeira coisa no topo */
+        border-left: none !important;
+        background-size: cover !important;
+        background-position: center !important;
     }
 
     .modal-texto {
         width: 100% !important;
         padding: 20px !important;
-        overflow-y: auto;
+        order: 2 !important; /* Texto vem logo abaixo da foto */
+        overflow-y: auto !important; /* Se o texto for grande, a rolagem fica aqui dentro */
+        box-sizing: border-box !important;
     }
 
     .modal-texto h2 {
-        font-size: 1.5rem;
+        font-size: 1.5rem !important;
+        margin-top: 0 !important;
+    }
+    
+    .modal-texto ul {
+        padding-left: 20px !important;
     }
 }
 
-/* Celulares muito pequenos */
+/* Celulares muito pequenos (Ajuste fino) */
 @media (max-width: 480px) {
     .campo-linha {
-        flex-direction: column; /* Em telas minúsculas, empilha até o Tipo e Categoria */
+        flex-direction: column; /* Empilha os seletores em telas bem pequenas */
     }
-    
+
+    .modal-imagem {
+        height: 150px !important; /* Reduz levemente a foto em telas minúsculas */
+        min-height: 150px !important;
+    }
+
     footer {
         padding: 20px 10px 90px 10px;
-        text-align: center;
     }
 }
