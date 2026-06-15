@@ -571,31 +571,32 @@ footer p {
    ========================================================================== */
 
 @media (max-width: 1024px) {
-    /* Esconde o menu do topo */
+    /* 1. Ajustes do Cabeçalho */
     .menu-bloco-direito {
-        display: none !important;
+        display: none !important; /* Esconde o menu desktop no celular */
     }
 
     header {
-        height: 80px;
+        height: 70px;
+        display: flex;
         justify-content: center;
-        padding: 0 20px;
+        align-items: center;
+        padding: 0 15px;
     }
 
-    /* Transforma o menu mobile em uma barra fixa no rodapé */
+    /* 2. Barra Fixa Inferior de Ícones */
     .menu-mobile {
-        display: flex;
+        display: flex !important;
         justify-content: space-around;
         align-items: center;
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 70px;
-        background: rgba(2, 9, 13, 0.95);
-        backdrop-filter: blur(10px);
-        border-top: 2px solid rgba(255, 255, 255, 0.08);
-        z-index: 99999; /* Garante que fica por cima de tudo */
+        height: 65px;
+        background: #02090d;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 99999;
         padding: 5px 0;
     }
 
@@ -604,88 +605,115 @@ footer p {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
         flex: 1;
-        color: rgba(255, 255, 255, 0.7);
-        transition: all 0.2s ease;
+        color: #ffffff90;
+        cursor: pointer;
     }
 
     .item-mobile span {
-        font-size: 1.4rem;
-        margin-bottom: 2px;
+        font-size: 1.3rem;
     }
 
     .item-mobile small {
-        font-size: 0.7rem;
-        font-weight: 600;
+        font-size: 0.65rem;
+        margin-top: 2px;
     }
 
-    /* Destaca o ícone do menu quando estiver ativo ou clicado */
     .item-mobile.ativo {
         color: #7cff73;
     }
 
-    /* Garante que o conteúdo da página não fique escondido atrás da barra fixa */
+    /* Evita que o rodapé suma atrás da barra fixa */
     body {
-        padding-bottom: 80px;
+        padding-bottom: 75px;
     }
 
-    /* RECONFIGURAÇÃO DO MODAL PARA CELULAR (IMAGEM + TEXTO) */
+    /* 3. Hero / Seção Inicial */
+    .hero-topo {
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .conteudo-apresentacao h1 {
+        font-size: 2rem !important;
+        line-height: 1.3;
+    }
+
+    .conteudo-apresentacao p {
+        font-size: 1rem !important;
+    }
+
+    /* 4. Área Interativa (Onde estava tudo quebrado) */
+    .container-duplo {
+        display: flex;
+        flex-direction: column; /* Empilha os blocos verticalmente */
+        gap: 30px;
+        padding: 20px 15px;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .coluna-contato, .form-container {
+        width: 100% !important; /* Ocupa a largura total da tela do celular */
+        box-sizing: border-box;
+    }
+
+    /* Ajuste para os campos do formulário não esmagarem */
+    .campo-linha {
+        display: flex;
+        flex-direction: row; /* Mantém Tipo e Categoria lado a lado se couber */
+        gap: 10px;
+    }
+
+    .campo-metade {
+        flex: 1;
+    }
+
+    .form-container input, 
+    .form-container select, 
+    .form-container textarea {
+        width: 100% !important;
+        box-sizing: border-box;
+        font-size: 1rem; /* Melhora a leitura e evita zoom automático no iOS */
+        padding: 10px;
+    }
+
+    /* 5. Correção do Modal no Celular */
     .modal {
-        width: 90%;
-        height: auto;
+        width: 92% !important;
+        height: auto !important;
         max-height: 85vh;
-        flex-direction: column; /* Empilha a imagem e o texto verticalmente */
+        flex-direction: column !important;
         border-radius: 12px;
+        overflow: hidden;
     }
 
-    /* Imagem agora fica no topo do modal */
     .modal-imagem {
-        width: 100%;
-        height: 180px; /* Define uma altura fixa para a foto no celular */
+        width: 100% !important;
+        height: 150px !important;
+        display: block !important;
         border-left: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        display: block !important; /* Força a imagem a aparecer */
     }
 
-    /* Texto fica na parte de baixo do modal */
     .modal-texto {
-        width: 100%;
-        padding: 20px 25px;
-        overflow-y: auto; /* Se o texto for grande, rola apenas esta parte */
+        width: 100% !important;
+        padding: 20px !important;
+        overflow-y: auto;
     }
 
     .modal-texto h2 {
-        font-size: 1.6rem;
-        margin-bottom: 10px;
-    }
-
-    .modal-texto p {
-        font-size: 1rem;
-        margin-bottom: 20px;
-    }
-
-    .modal-texto ul li {
-        font-size: 0.95rem;
-        margin-bottom: 10px;
+        font-size: 1.5rem;
     }
 }
 
+/* Celulares muito pequenos */
 @media (max-width: 480px) {
-    .modal {
-        width: 95%;
-        max-height: 90vh;
+    .campo-linha {
+        flex-direction: column; /* Em telas minúsculas, empilha até o Tipo e Categoria */
     }
-
-    .modal-imagem {
-        height: 140px; 
-    }
-
-    .modal-texto {
-        padding: 15px 20px;
-    }
-
-    .modal-texto h2 {
-        font-size: 1.4rem;
+    
+    footer {
+        padding: 20px 10px 90px 10px;
+        text-align: center;
     }
 }
