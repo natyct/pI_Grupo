@@ -174,15 +174,14 @@ header {
 .hero-topo {
     display:flex;
     align-items:flex-start;
-    padding-top:150px;
-    background-image: url("../img/background.png");
     position:relative;
+    background-image: url("../img/background.png");
 
     width:100%;
     min-height:100vh;
-
-    padding-top:125px;
+    padding-top:120px;
     padding-left:80px;
+    padding-bottom: 40px;
 
     background-size:cover;
     background-position:center;
@@ -576,7 +575,124 @@ footer p {
     transition: background-image 0.3s ease;
 }
 
-@media (max-width: 1024px) {
+
+/* ==========================================================================
+   (NOTEBOOKS / TELAS MÉDIAS)
+   ========================================================================== */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    header {
+        height: 110px;
+        padding: 0 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo h2 {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    /* Agrupador do lado direito: Força o alinhamento reto e sem quebra horizontal */
+    .menu-bloco-direito {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+    }
+
+    /* Caixa Conheça o Projeto */
+    .quadro-header-projeto {
+        padding: 8px 12px;
+        gap: 6px;
+        border: 2px solid #7cff73;
+        flex-shrink: 0;
+    }
+
+    .texto-projeto h4 { 
+        font-size: 0.72rem;
+    }
+    
+    .texto-projeto p { 
+        font-size: 0.62rem;
+    }
+
+    /* Container dos Ícones: A grande trava que impede os círculos de pularem linha */
+    .icones-container {
+        display: flex;
+        gap: 10px;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        align-items: center;
+    }
+
+    /* Cada botão do menu reajustado proporcionalmente */
+    .icone {
+        width: 82px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    /* O círculo reajustado para caber perfeitamente na horizontal */
+    .circulo {
+        width: 46px !important;
+        height: 46px !important;
+        max-width: 46px;
+        max-height: 46px;
+        font-size: 1.2rem;
+        border-width: 2px;
+    }
+
+    /* O texto abaixo do círculo */
+    .icone span {
+        font-size: 0.65rem;
+        margin-top: 6px;
+        line-height: 1.2;
+        white-space: normal;
+        display: block;
+    }
+
+    .menu-mobile {
+        display: none !important;
+    }
+
+    /* Trava de segurança para o conteúdo principal e o botão verde de baixo */
+    .hero-topo {
+        min-height: 100vh;
+        padding-top: 120px;
+        padding-bottom: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    .conteudo-apresentacao {
+        max-width: 580px;
+        margin-top: 0;
+    }
+
+    .conteudo-apresentacao h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    .conteudo-apresentacao p {
+        font-size: 0.95rem;
+    }
+}
+
+/* ==========================================================================
+   Celulares
+  ========================================================================== */
+
+  @media (max-width: 1024px) {
+    .menu-mobile {
+        display: none !important;
+    }
+
     /* 1. Ajustes do Cabeçalho */
     .menu-bloco-direito {
         display: none !important; 
