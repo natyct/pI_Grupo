@@ -193,7 +193,8 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135px, rgba(2, 9, 13, 0.95) 20%, rgba(2, 9, 13, 0.4) 100%);    background: linear-gradient(
+    background: linear-gradient(135px, rgba(2, 9, 13, 0.95) 20%, rgba(2, 9, 13, 0.4) 100%);    
+    background: linear-gradient(
         90deg,
         rgba(2, 9, 13, 0.90) 0%,
         rgba(2, 9, 13, 0.75) 45%,
@@ -820,7 +821,7 @@ footer p {
         overflow: hidden !important;
     }
 
-.modal-imagem {
+    .modal-imagem {
         width: 100% !important;
         height: 170px !important;
         min-height: 170px !important;
@@ -851,6 +852,34 @@ footer p {
     
     .modal-texto ul {
         padding-left: 20px !important;
+    }
+    html body footer {
+        padding: 40px 20px 110px 20px; /* Aumenta a folga embaixo para não cobrir os ícones fixos */
+        display: flex;
+        flex-direction: column;        /* Empilha os textos um embaixo do outro */
+        align-items: center;
+        text-align: center;
+        gap: 20px;                      /* Cria um espaço saudável entre as frases */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Ajuste da frase de impacto esquerda */
+    footer .frase-impacto, 
+    footer h3 {
+        font-size: 1.3rem;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    /* Ajuste do bloco de créditos direito */
+    footer .creditos, 
+    footer p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        max-width: 90%;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.6);
     }
 }
 
